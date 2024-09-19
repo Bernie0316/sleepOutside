@@ -1,4 +1,8 @@
 {
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false // 這樣 ESLint 就不需要額外的 Babel 配置文件
+  },
   "plugins": ["import"],
   "extends": ["eslint:recommended", "plugin:import/errors", "prettier"],
   "env": {
@@ -6,38 +10,34 @@
     "browser": true,
     "node": true
   },
-  "parserOptions": {
-    "ecmaVersion": 2020,
-    "sourceType": "module"
-  },
   "rules": {
     "no-unused-vars": [
-      1,
+      "warn",
       {
         "argsIgnorePattern": "res|next|^err"
       }
     ],
-    "arrow-body-style": [2, "as-needed"],
+    "arrow-body-style": ["error", "as-needed"],
     "no-param-reassign": [
-      2,
+      "error",
       {
         "props": false
       }
     ],
-    "no-console": 1,
-    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
-    "func-names": 0,
-    "space-unary-ops": 2,
+    "no-console": "warn",
+    "quotes": ["error", "double", { "allowTemplateLiterals": true }],
+    "func-names": "off",
+    "space-unary-ops": "error",
     "space-in-parens": "error",
     "space-infix-ops": "error",
-    "comma-dangle": 0,
-    "max-len": 0,
-    "import/extensions": 0,
-    "no-underscore-dangle": 0,
-    "consistent-return": 0,
-    "radix": 0,
+    "comma-dangle": "off",
+    "max-len": "off",
+    "import/extensions": "off",
+    "no-underscore-dangle": "off",
+    "consistent-return": "off",
+    "radix": "off",
     "no-shadow": [
-      2,
+      "error",
       {
         "hoist": "all",
         "allow": ["resolve", "reject", "done", "next", "err", "error"]
