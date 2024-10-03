@@ -1,27 +1,20 @@
-class ProductData {
-    constructor() {
-        this.dataUrl = './public/json/tents.json'; 
-    }
+import ProductData from "./ProductData.mjs";
+import ProductListing from "./ProductList.mjs";
 
-    async fetchProducts() {
-        try {
-            const response = await fetch(this.dataUrl);
-            if (!response.ok) {
-                throw new Error("can't link to './public/json/tents.json'");
-            }
-            const data = await response.json();
-            return data; 
-        } catch (error) {
-            console.error('Error fetching product data:', error);
-        }
+const category = 'tents'
+const productData = new ProductData(category);
+const listElement = document.querySelector(`#product-list`);
+
+async function displayProducts() {
+    try {
+        const products = await productData.getData();
+        console.log(products);
+    } catch (error) {
+        console.error('error when getting products', error);
     }
 }
 
-const productData = new ProductData();
+displayProducts();
 
-const loadProducts = async () => {
-    const products = await productData.fetchProducts();
-    console.log(products); // 檢查讀取到的產品數據
-};
-
-loadProducts();
+const productListing = new ProductListing(category, productData, listElement);
+productListing.init();
