@@ -28,5 +28,5 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   }
 
   const htmlStrings = list.map(templateFn).join('');
-  parentElement.insertAdjacentHTML(position, htmlStrings);
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
 }

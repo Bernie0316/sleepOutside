@@ -4,10 +4,10 @@ function productCardTemplate(product) {
     return `
         <li class="product-card">
         <a href="product_pages/index.html?product=${product.Id}">
-            <img src="${product.imageUrl}" alt="Image of ${product.name}">
-            <h3 class="card__brand">${product.brand}</h3>
-            <h2 class="card__name">${product.name}</h2>
-            <p class="product-card__price">$${product.price}</p>
+            <img src="${product.Image}" alt="Image of ${product.Name}">
+            <h3 class="card__brand">${product.Brand.Name}</h3>
+            <h2 class="card__name">${product.Name}</h2>
+            <p class="product-card__price">$${product.FinalPrice}</p>
         </a>
         </li>
     `;
@@ -34,6 +34,6 @@ export default class ProductListing {
     }
 
     renderList(products) {
-        renderListWithTemplate(productCardTemplate, this.listElement, products, "afterbegin", ture);
+        renderListWithTemplate(productCardTemplate, this.listElement, products, "afterbegin", true);
     }
 }
